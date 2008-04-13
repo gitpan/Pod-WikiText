@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+META.yml
+License
+t/test.t
+lib/Pod/WikiText.pm

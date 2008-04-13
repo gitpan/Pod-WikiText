@@ -1,0 +1,40 @@
+Pod-WikiText
+============
+
+Support for Wiki markup in POD
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires these other modules and libraries:
+
+- strict
+- warnings
+- Carp
+- Cwd
+- File::Spec
+- Text::Wrap
+- Text::Tiki
+- Syntax::Highlight::Engine::Kate
+
+RATIONALE
+
+Provided an alternative for documentation of Perl source files which allows
+the use of a robust flavor of Wiki markup in place of POD markup. This allows
+the creation of more expressive POD in your Perl source files, and hence
+better documentation when published.
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2008 by Brad Adkins. All rights reserved.
+
+This library is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself.

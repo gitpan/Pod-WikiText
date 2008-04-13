@@ -1,0 +1,27 @@
+##author:Brad Adkins
+##outfile:Changes.html
+##title:Pod-WikiText Revision History
+##toc:yes
+=begin wiki
+
+!1 Name
+
+Revision history for Perl extension Pod::WikiText.
+
+----
+
+!3 Version 0.02
+
+Sat Apr 12 2008
+
+Initial release.
+
+----
+
+!3 Version 0.04
+
+Sat Apr 12 2008
+
+Minor fixes to release package.
+
+----
