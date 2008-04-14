@@ -1,101 +1,80 @@
 package Pod::WikiText;
 
+=head1 NAME
+
+WikiText - Support for the use of Wiki markup.
+
+=head1 SUMMARY
+
+Support the use of Wiki markup for general documentation purposes. This
+module uses the Text-Tiki module for markup support. The purpose of this
+module is to provide a convenient way to incorporate Wiki markup into
+lots of different types of documents including, but not limited to, your
+own Perl source files.
+
+=head1 SYNOPSIS
+
+    use Pod::WikiText;
+
+    my $formatter = Pod::WikiText->new(
+        format  => 'html',
+        author  => 'Brad Adkins',
+        infile  => 'test.pl',
+        outfile => 'stdout',
+        title   => 'Example',
+    );
+
+    $formatter->format;
+
+You can create multiple Pod::WikiText objects if needed.
+
+=head1 RATIONALE
+
+Provided an alternative for documentation of Perl source files which allows
+the use of a robust flavor of Wiki markup in place of POD markup. This
+allows the creation of more expressive POD in your Perl source files, and
+hence better documentation when published.
+
+=head1 DESCRIPTION
+
+POD sections in source files are marked in the standard way with 'begin' and
+'cut' tags. The 'begin' tag must be followed by the keyword 'wiki', as in:
+"=begin wiki". (See this source file for examples.)
+
+This module can be used for many purporses beyond Perl source documentation.
+Presentations and other forms of documentaiton are candiates for use. This is
+possible because the markup support provided by the Text::Tiki module is very
+good, and several options are provided by Pod::WikiText specifically with
+general documentation purposes in mind.
+
+Caveat: You should probably not use WikiText as POD in source files that you
+plan to upload to CPAN, unless you include normal POD as well. :-)
+
+=head1 ADDITIONAL INFORMATION
+
+Please see the WikiText documentation embedded in this source file for additional
+details on how to use WikiText.pm. You can view this documentation using
+WikiText.pm itself to format the WikiText content in this file. Hint: download and
+install WikiText.pm.
+
+Thank you!
+
+=head1 COPYRIGHT
+
+Copyright 2008 Brad Adkins <dbijcl@gmail.com>.
+
+Permission is granted to copy, distribute and/or modify this document under the
+terms of the GNU Free Documentation License, published by the Free Software
+Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no
+Back-Cover Texts.
+
+=head1 AUTHOR
+
+Brad Adkins, dbijcl@gmail.com
+
+=cut
+
 =begin wiki
-
-!1 Pod Punch List
-
-!2 Tests
-
-The test harness has to be modified so it can ignore specific lines (lines \
-with dates for example).
-
-!2 Format Option
-
-* /V/ html
-* /V/ text
-* /V/ reference
-* /V/ codetext
-* /V/ codehtml
-
-!2 Additional Options
-
-* /V/ section
-* /V/ infile
-* /V/ outfile
-* /V/ author
-* /V/ title
-* /V/ useheader
-* /V/ header
-* /V/ usefooter
-* /V/ footer
-* /V/ toc
-* /V/ navigation
-* /V/ borders
-* /V/ wrapcol
-* /V/ codelabels
-* /V/ language
-* /V/ startinpod
-* /V/ linkback
-* /V/ debug
-
-!2 Current Enhancements
-
-* /V/ Html header and footer
-* /V/ Genearate a Table of Contents
-* /V/ Syntax Highlighting of code blocks
-* /V/ Insert space into table cells for better padding
-* /V/ Allow cells which contain a period in column one to be empty cells
-* /V/ Allow line breaking inside of table cells
-* /V/ Allow global document setting of table borders
-* /V/ Support for <nul> replacement after Tiki markup
-* /V/ Support for borders/noborders within table source
-* /V/ Support for linkback html at beginning of document
-* /V/ Variable substitution in document header and footer
-* /V/ Provided a full complement of "setters"
-* /V/ Add support for table row background color
-* /V/ Add support for table cell background color
-* /V/ Correct problem where table is followed immediately by <hr>
-* /V/ Support use of an svg "checkmark" image
-
-/V/ = Latin for Veritas, or "truth", signifying the item has been completed.
-
-!2 Support Scripts
-
-* wthtml.pl
-* wttext.pl
-* wtreference.pl
-* wtcodetext.pl
-* wtcodehtml.pl
-
-These will gather the appropriate command line parameters. Provide format \
-specific help, and invoke Pod::WikiText for that particular format type.
-
-These utilities also provide conf file storage for their respective defaults.
-
-!2 Documentation
-
-* Show this table for all options that are specific to only certain table \
-types, just give a list of the others.
-
-|*format* |*option1*|*option2*|*option3*|*option4*|
-|html     |yes      |no       |yes      |no       |
-|text     |yes      |no       |yes      |no       |
-|reference|yes      |no       |yes      |no       |
-|codetext |yes      |no       |yes      |no       |
-|codehtml |yes      |no       |yes      |no       |
-
-!2 Tests
-
-Write tests for each output format. Write tests for each option. Write tests \
-for all subroutines not covered by the above tests.
-
-!2 Future Enhancements
-
-* Allow user specified ignore "meta tags"
-* Allow optional custom style sheet (external style sheet)
-* Allow optional background image (format html only)
-
-----
 
 !1 NAME
 
@@ -110,12 +89,13 @@ Support for Wiki markup in POD.
  % language=Perl
  % use Pod::WikiText;
  %
- % my $formatter = Pod::WikiText->new( format  => 'html',
- %                                     author  => 'Brad Adkins',
- %                                     infile  => 'test.pl',
- %                                     outfile => 'stdout'
- %                                     title   => 'Example'
- %                                   );
+ % my $formatter = Pod::WikiText->new(
+ %     author  => 'Brad Adkins',
+ %     infile  => 'test.pl',
+ %     outfile => 'stdout'
+ %     title   => 'Example'
+ %     );
+ %
  % $formatter->format;
  %%
 
@@ -317,6 +297,98 @@ yet implemented are simply ignored.
 
 ----
 
+!1 Development Notes
+
+The following notes are largely intended for the developer (me), but you may
+find them informative.
+
+!2 Format Option
+
+* /V/ html
+* /V/ text
+* /V/ reference
+* /V/ codetext
+* /V/ codehtml
+
+!2 Additional Options
+
+* /V/ section
+* /V/ infile
+* /V/ outfile
+* /V/ author
+* /V/ title
+* /V/ useheader
+* /V/ header
+* /V/ usefooter
+* /V/ footer
+* /V/ toc
+* /V/ navigation
+* /V/ borders
+* /V/ wrapcol
+* /V/ codelabels
+* /V/ language
+* /V/ startinpod
+* /V/ linkback
+* /V/ debug
+
+!2 Current Enhancements
+
+* /V/ Html header and footer
+* /V/ Genearate a Table of Contents
+* /V/ Syntax Highlighting of code blocks
+* /V/ Insert space into table cells for better padding
+* /V/ Allow cells which contain a period in column one to be empty cells
+* /V/ Allow line breaking inside of table cells
+* /V/ Allow global document setting of table borders
+* /V/ Support for <nul> replacement after Tiki markup
+* /V/ Support for borders/noborders within table source
+* /V/ Support for linkback html at beginning of document
+* /V/ Variable substitution in document header and footer
+* /V/ Provided a full complement of "setters"
+* /V/ Add support for table row background color
+* /V/ Add support for table cell background color
+* /V/ Correct problem where table is followed immediately by <hr>
+* /V/ Support use of an svg "checkmark" image
+
+/V/ = Latin for Veritas, or "truth", signifying the item has been completed.
+
+!2 To Do - Support Scripts
+
+* wthtml.pl
+* wttext.pl
+* wtreference.pl
+* wtcodetext.pl
+* wtcodehtml.pl
+
+These will gather the appropriate command line parameters. Provide format \
+specific help, and invoke Pod::WikiText for that particular format type.
+
+These utilities also provide conf file storage for their respective defaults.
+
+!2 Documentation
+
+* Show this table for all options that are specific to only certain table \
+types, just give a list of the others.
+
+|*format* |*option1*|*option2*|*option3*|*option4*|
+|html     |yes      |no       |yes      |no       |
+|text     |yes      |no       |yes      |no       |
+|reference|yes      |no       |yes      |no       |
+|codetext |yes      |no       |yes      |no       |
+|codehtml |yes      |no       |yes      |no       |
+
+!2 Tests
+
+Tests beyond the basic "can load" need to be written.
+
+!2 Future Enhancements
+
+* Allow user specified ignore "meta tags"
+* Allow optional custom style sheet (external style sheet)
+* Allow optional background image (format html only)
+
+----
+
 =cut
 
 use strict;
@@ -328,7 +400,7 @@ use Text::Wrap;
 use Text::Tiki;
 use Syntax::Highlight::Engine::Kate;
 
-our $VERSION = "0.06";
+our $VERSION = "0.08";
 our $PROGRAMNAME = "WikiText";
 
 my (%docinfo,@aotoc,%hotoc,@inpod,@lines,@format,@nonformat);
@@ -2251,14 +2323,18 @@ Text::Tiki, but this will probably be request driven.
 
 !1 COPYRIGHT
 
-All rights reserved. This software is distributed under the same terms as Perl \
-itself.
+Copyright 2008 Brad Adkins <dbijcl@gmail.com>.
+
+Permission is granted to copy, distribute and/or modify this document under the \
+terms of the GNU Free Documentation License, published by the Free Software \
+Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no \
+Back-Cover Texts.
 
 ----
 
 !1 AUTHOR
 
-Brad Adkins, dbijcl at gmail dotcom
+Brad Adkins, dbijcl@gmail.com
 
 ----
 
@@ -2273,3 +2349,5 @@ Text::Tiki markup in particular.
 =cut
 
 1;
+
+__END__

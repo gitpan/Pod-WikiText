@@ -11,6 +11,6 @@ WriteMakefile(
                            'Syntax::Highlight::Engine::Kate' => 0,
                          }, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT       => 'Support for Wiki markup in POD',
+      (ABSTRACT_FROM  => 'lib/Pod-WikiText.pm', # retrieve abstract from module
        AUTHOR         => 'Brad Adkins <dbijcl@gmail.com>') : ()),
 );
