@@ -10,18 +10,10 @@ Revision history for Perl extension Pod::WikiText.
 
 ----
 
-!3 Version 0.02
+!3 Version 0.06
 
-Sat Apr 12 2008
+Sun Apr 13 2008
 
 Initial release.
-
-----
-
-!3 Version 0.04
-
-Sat Apr 12 2008
-
-Minor fixes to release package.
 
 ----

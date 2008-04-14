@@ -12,5 +12,5 @@ WriteMakefile(
                          }, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
       (ABSTRACT       => 'Support for Wiki markup in POD',
-       AUTHOR         => 'Brad Adkins <brad.j.adkins@gmail.com>') : ()),
+       AUTHOR         => 'Brad Adkins <dbijcl@gmail.com>') : ()),
 );

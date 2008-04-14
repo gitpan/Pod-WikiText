@@ -1,16 +1,13 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         Pod-WikiText
-version:      0.04
+name: Pod-WikiText
+version: 0.06
 version_from: lib/Pod/WikiText.pm
-installdirs:  site
+installdirs: site
 requires:
-    Test::Harness:                    0
-    Test::More:                       0
-    File::Spec                        0
-    Text::Wrap                        0
-    Text::Tiki                        0
-    Syntax::Highlight::Engine::Kate   0
-
+  Test::Harness: 0
+  Test::More: 0
+  File::Spec: 0
+  Text::Wrap: 0
+  Text::Tiki: 0
+  Syntax::Highlight::Engine::Kate: 0
 distribution_type: module
 generated_by: ExtUtils::MakeMaker version 6.38

@@ -328,7 +328,7 @@ use Text::Wrap;
 use Text::Tiki;
 use Syntax::Highlight::Engine::Kate;
 
-our $VERSION = "0.04";
+our $VERSION = "0.06";
 our $PROGRAMNAME = "WikiText";
 
 my (%docinfo,@aotoc,%hotoc,@inpod,@lines,@format,@nonformat);
