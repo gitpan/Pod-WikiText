@@ -30,4 +30,11 @@ Tue Apr 15, 2008
 * Fixed tarball permissions problem. Use bsdtar not tar on Windows.
 * Added 13 tests.
 
+!3 Version 0.12
+
+Fri Apr 18, 2008
+
+* Fixed bad file in distribution.
+* Building CPAN distributiions on Windows is a horrible pain.
+
 ----

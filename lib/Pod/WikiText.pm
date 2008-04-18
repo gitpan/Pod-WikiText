@@ -400,7 +400,7 @@ use Text::Wrap;
 use Text::Tiki;
 use Syntax::Highlight::Engine::Kate;
 
-our $VERSION = "0.10";
+our $VERSION = "0.12";
 our $PROGRAMNAME = "WikiText";
 
 my (%docinfo,@aotoc,%hotoc,@inpod,@lines,@format,@nonformat);

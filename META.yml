@@ -1,5 +1,6 @@
+---
 name: Pod-WikiText
-version: 0.10
+version: 0.12
 author:
   - 'Brad Adkins <dbijcl@gmail.com>'
 abstract: Support for the use of Wiki markup
@@ -15,5 +16,5 @@ build requires:
 provides:
   Pod::WikiText
     file: lib/Pod/WikiText.pm
-    version: 0.10
+    version: 0.12
 distribution_type: module
