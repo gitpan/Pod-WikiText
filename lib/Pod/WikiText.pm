@@ -2,7 +2,7 @@ package Pod::WikiText;
 
 =head1 NAME
 
-WikiText - Support for the use of Wiki markup.
+Pod::WikiText - Support for the use of Wiki markup.
 
 =head1 SUMMARY
 
@@ -400,7 +400,7 @@ use Text::Wrap;
 use Text::Tiki;
 use Syntax::Highlight::Engine::Kate;
 
-our $VERSION = "0.08";
+our $VERSION = "0.10";
 our $PROGRAMNAME = "WikiText";
 
 my (%docinfo,@aotoc,%hotoc,@inpod,@lines,@format,@nonformat);
@@ -414,7 +414,7 @@ my @file_management_keys = (
 my @object_param_keys = (
     "format","section","infile","outfile","author","title","header","useheader",
     "footer","usefooter","toc","navigation","borders","wrapcol","codelabels",
-    "usesvg","language","startinpod","linkback","debug"
+    "usesvg","language","startinpod","linkback","debug","outdir"
 );
 
 =begin wiki
@@ -434,6 +434,7 @@ The constructor method supports the following named arguments.
 |%section%    |none         |a level 1 heading|
 |%infile%     |required     |filename|
 |%outfile%    |required     |filename|
+|%outdir%     |optional     |directory|
 |%author%     |none         |html meta author|
 |%title%      |none         |html title|
 |%header%     |none         |WikiText markup|
@@ -473,6 +474,7 @@ sub new {
         _section    => $arg{section}        || '',
         _infile     => $arg{infile}         || croak("no infile given"),
         _outfile    => $arg{outfile}        || "stdout",
+        _outdir     => $arg{outdir}         || '',
         _author     => $arg{author}         || '',  ## for html head
         _title      => $arg{title}          || '',  ## for html head
         _header     => $arg{header}         || '',
@@ -746,7 +748,7 @@ sub is_valid_param {
     $key =~ s/^_//;
     if ( $key =~ /format|section|infile|outfile|author|title|header|useheader|
                   footer|usefooter|toc|navigation|borders|wrapcol|startinpod|
-                  linkback|debug/x ) {
+                  linkback|debug|outdir/x ) {
         return 1;
     }
     return 0;
@@ -1317,10 +1319,13 @@ sub output_format {
     my ($self, $output) = @_;
 
     my $outfile = $self->{_outfile};
+    if ( $self->{_outdir} ) {
+        $outfile = $self->{_outdir} . $outfile;
+    }
     if ( $outfile =~ /stdout/i ) {
         print $$output;
     } else {
-        open(my $fh, ">", $outfile) or die "unable to open $outfile";
+        open(my $fh, ">", $outfile) or die "unable to create $outfile";
         print $fh $$output;
         close $fh;
     }
@@ -2296,7 +2301,10 @@ sub write_checkmark_svg {
     ENDSVG
     $svgimage =~ s/^ {4,4}//gm;
 
-    my ($volume,$outpath,$file) = File::Spec->splitpath( $self->{_outfile} );
+    my $dir = $self->{_outdir};
+    my $fil = $self->{_outfile};
+    if ( $dir ) { $fil = $dir.$fil; };
+    my ($volume,$outpath,$file) = File::Spec->splitpath($fil);
     my $svgfile = $outpath . 'checkmark.svg';
     open(my $fh, ">", $svgfile) or die "unable to create svg file";
     print $fh $svgimage;

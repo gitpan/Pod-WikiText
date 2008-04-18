@@ -3,6 +3,6 @@ Makefile.PL
 MANIFEST
 README
 META.yml
-License
-t/test.t
+t/01_load.t
+t/02_head.t
 lib/Pod/WikiText.pm

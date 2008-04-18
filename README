@@ -1,42 +1,56 @@
-Pod-WikiText
-============
+============================================================================
+                                Pod-WikiText
+============================================================================
 
-Support for Wiki markup in POD
+NAME 
+
+Pod::WikiText - Support for Wiki markup in POD
+
+SYNOPSIS
+
+    my $formatter = Pod::WikiText->new(infile=>'file_to_format');
+    $formatter->format;
+
+OPTIONS
+
+Options are many, please see both the POD documentation, and the WikiText 
+documentation in the module.
 
 INSTALLATION
 
-To install this module type the following:
-
-   perl Makefile.PL
-   make
-   make test
-   make install
+    perl Makefile.PL
+    make
+    make test
+    make install
 
 DEPENDENCIES
 
 This module requires these other modules and libraries:
 
-- strict
-- warnings
-- Carp
-- Cwd
-- File::Spec
-- Text::Wrap
-- Text::Tiki
-- Syntax::Highlight::Engine::Kate
+    - strict
+    - warnings
+    - Carp
+    - Cwd
+    - File::Spec
+    - Text::Wrap
+    - Text::Tiki
+    - Syntax::Highlight::Engine::Kate
 
 RATIONALE
 
 Provided an alternative for documentation of Perl source files which allows
-the use of a robust flavor of Wiki markup in place of POD markup. This allows
-the creation of more expressive POD in your Perl source files, and hence
-better documentation when published.
+the use of a robust flavor of Wiki markup in place of POD markup. This 
+allows the creation of more expressive POD in your Perl source files, and 
+hence better documentation when published.
 
-COPYRIGHT AND LICENCE
+AUTHOR
 
-Copyright 2008 Brad Adkins <dbijcl@gmail.com>.
+Brad Adkins <dbijcl@gmail.com>
 
-Permission is granted to copy, distribute and/or modify this document under the
-terms of the GNU Free Documentation License, published by the Free Software
-Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no
-Back-Cover Texts.
+COPYRIGHT
+
+Copyright (c) 2008, Brad Adkins. Rights Reserved. This module is free 
+software. It may be used, redistributed and/or modified under the terms of 
+the Perl Artistic License (see http://www.perl.com/perl/misc/Artistic.html).
+
+============================================================================

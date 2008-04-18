@@ -1,13 +1,19 @@
 name: Pod-WikiText
-version: 0.08
+version: 0.10
+author:
+  - 'Brad Adkins <dbijcl@gmail.com>'
+abstract: Support for the use of Wiki markup
 version_from: lib/Pod/WikiText.pm
-installdirs: site
 requires:
-  Test::Harness: 0
-  Test::More: 0
   File::Spec: 0
   Text::Wrap: 0
   Text::Tiki: 0
   Syntax::Highlight::Engine::Kate: 0
+build requires:
+  Test::Harness: 0
+  Test::More: 0
+provides:
+  Pod::WikiText
+    file: lib/Pod/WikiText.pm
+    version: 0.10
 distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.38
